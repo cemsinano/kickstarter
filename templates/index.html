@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Kickstarter Projects</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body style="background: #000;">
+ <div class="login">
+	<h1>Kickstarter Project Forecasting</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="main_category" placeholder="Main Category (Design, Games, Art ...)" required="required" />
+      <input type="text" name="country" placeholder="country code (US, GB ...)" required="required" />
+      <input type="text" name="name_wcount" placeholder="name word count" required="required" />
+      <input type="text" name="campaing_len" placeholder="campaign len in days" required="required" />
+      <input type="text" name="launched_hour" placeholder="launched hour" required="required" />
+      <input type="text" name="launched_month" placeholder="launched month (January, February ...)" required="required" />
+      <input type="text" name="launched_year" placeholder="launched year" required="required" />
+      <input type="text" name="launched_weekend" placeholder="launched weekend (boolean)" required="required" />
+      <input type="text" name="deadline_weekend" placeholder="deadline weekend (boolean)" required="required" />
+      <input type="text" name="goal_usd" placeholder="goal in usd" required="required" />
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict success of the campaign</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
